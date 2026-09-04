@@ -1,0 +1,8 @@
+[build]
+  publish = "/"
+  # Skip a deploy (and its credit cost) unless a page itself changed —
+  # docs-only commits (README, CLAUDE.md, CHANGELOG, this file) shouldn't
+  # trigger a rebuild of an already-live, unchanged site.
+  # git diff --quiet exits 1 (build proceeds) if any *.html file differs
+  # between the last deployed commit and this one, 0 (skipped) if not.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- '*.html'"
