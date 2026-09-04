@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pantaz Co. Site Catalog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Pantaz Co. builds websites for local trades in Southwestern Ontario. Pick your trade, compare Standard vs. Premium, and see real pricing — one link, no separate demos to send." />
+<meta property="og:title" content="Pantaz Co. Site Catalog" />
+<meta property="og:description" content="Pick your trade, compare Standard vs. Premium, and see real pricing — Pantaz Co. builds sites for local trades in Southwestern Ontario." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400..900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     PANTAZ CO. CATALOG SHELL — matches the Pantaz Co. brand system: warm
+     paper ground, navy for the brand, clay reserved for the one
+     ask on screen (buttons, phone numbers, "book now").
+     ============================================================ */
+  :root {
+    --ink: #faf8f4;
+    --ink-2: #ffffff;
+    --ink-3: #efe8e4;
+    --line: #e3dcd3;
+    --line-soft: #ece5dc;
+    --paper: #1c1b19;
+    --paper-dim: #5b6472;
+    --paper-faint: #8a8177;
+    --safety: #c2542a;
+    --safety-dim: #a8431e;
+    --navy: #2a487c;
+    --navy-dark: #1b3966;
+    --radius: 10px;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --display: 'Source Sans 3', var(--sans);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    line-height: 1.55;
+  }
+  h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.01em; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  .shell { max-width: 1080px; margin: 0 auto; padding: 0 22px 80px; }
+
+  /* ---- brand header ---- */
+  .brand-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 0 20px; border-bottom: 1px solid var(--line);
+  }
+  .brand-lockup { display: flex; align-items: center; gap: 9px; color: var(--navy); }
+  .brand-mark { width: 24px; height: 24px; flex-shrink: 0; }
+  .brand-mark .solid { fill: var(--navy); }
+  .brand-mark .outline { fill: none; stroke: var(--navy); stroke-width: 2; }
+  .brand-wordmark { font-family: var(--display); font-weight: 800; font-size: 19px; color: var(--paper); letter-spacing: -.01em; }
+  .brand-tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--paper-faint); }
+
+  /* ---- cover ---- */
+  .cover { padding: 44px 0 40px; }
+  .cover h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.05; letter-spacing: -.02em; font-weight: 900; }
+  .cover h1 em { color: var(--safety); font-style: normal; }
+  .cover p { max-width: 56ch; color: var(--paper-dim); font-size: 17px; margin-top: 16px; }
+
+  /* ---- base, not ceiling ---- */
+  .base-not-ceiling {
+    background: var(--navy-dark); border-radius: var(--radius);
+    padding: 30px 28px; margin: 4px 0 40px;
+  }
+  .base-not-ceiling .bnc-eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); margin-bottom: 10px;
+  }
+  .base-not-ceiling h2 { color: #fff; font-size: clamp(22px, 3vw, 28px); margin-bottom: 12px; }
+  .base-not-ceiling p:not(.bnc-eyebrow) { color: rgba(255,255,255,.85); font-size: 15px; max-width: 68ch; }
+
+  /* ---- picker ---- */
+  .picker { padding: 8px 0 36px; }
+  .picker-label {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--paper-faint); margin-bottom: 12px; display: block;
+  }
+  .swatch-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .swatch {
+    display: flex; align-items: center; gap: 9px; background: var(--ink-2); border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--paper-dim); padding: 10px 14px; cursor: pointer; font: inherit; font-size: 14px;
+    font-weight: 600; transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .swatch svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .swatch-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .swatch:hover { border-color: var(--paper-faint); color: var(--paper); }
+  .swatch[aria-pressed="true"] { background: var(--ink-3); border-color: var(--swatch-accent, var(--safety)); color: var(--paper); }
+
+
+  /* ---- preview frame ---- */
+  .preview-wrap { padding: 6px 0 46px; }
+  .browser-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--ink-2); border: 1px solid var(--line); border-bottom: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 10px 14px; font-family: var(--mono); font-size: 12.5px; color: var(--paper-faint);
+  }
+  .browser-url { color: var(--paper-dim); }
+  .browser-url b { color: var(--paper); font-weight: 600; }
+  .browser-tag {
+    font-size: 11px; letter-spacing: .08em; padding: 3px 8px; border: 1px solid var(--live-accent, var(--safety));
+    border-radius: 999px; color: var(--live-accent, var(--safety));
+  }
+  .browser-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .open-tab-btn {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--paper);
+    background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .open-tab-btn:hover { border-color: var(--live-accent, var(--safety)); color: var(--live-accent, var(--safety)); }
+  .open-tab-btn svg { width: 13px; height: 13px; }
+  .preview-frame {
+    height: 720px; overflow: hidden; border: 2px solid var(--live-accent, var(--line));
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 0 0 0 1px var(--ink-2), 0 30px 60px -30px rgba(28,27,25,.25);
+    background: #fff;
+  }
+  .preview-frame > div { height: 100%; overflow-y: auto; scroll-behavior: smooth; }
+
+  /* ---- pricing / tier cards (also the tier picker) ---- */
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .price-card {
+    display: block; width: 100%; text-align: left; font: inherit; color: inherit;
+    background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .price-card:hover { border-color: var(--paper-faint); }
+  .price-card:focus-visible { outline: 2px solid var(--safety); outline-offset: 2px; }
+  .price-card[aria-pressed="true"] { background: var(--ink-3); border-color: var(--safety); }
+  .price-tier-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .price-tier { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-faint); }
+  .price-card[aria-pressed="true"] .price-tier { color: var(--safety); }
+  .price-picked {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; color: var(--safety);
+    border: 1px solid var(--safety); border-radius: 999px; padding: 2px 7px; opacity: 0; transition: opacity .15s ease;
+  }
+  .price-card[aria-pressed="true"] .price-picked { opacity: 1; }
+  .price-amount {
+    font-family: var(--display); font-size: 42px; font-weight: 800; margin: 6px 0 1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .price-sub { font-size: 13px; color: var(--paper-faint); font-family: var(--mono); margin-bottom: 6px; }
+  .price-tagline { font-size: 13.5px; color: var(--paper-dim); margin-bottom: 16px; }
+  .price-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+  .price-list li { font-size: 13.5px; color: var(--paper-dim); padding-left: 18px; position: relative; }
+  .price-list li::before { content: "—"; position: absolute; left: 0; color: var(--paper-faint); }
+
+  .founding-banner {
+    border: 1px dashed var(--safety); background: rgba(194,84,42,.08); border-radius: var(--radius);
+    padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px;
+  }
+  .founding-banner svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--safety); margin-top: 2px; }
+  .founding-banner h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
+  .founding-banner p { font-size: 14px; color: var(--paper-dim); }
+
+  /* ---- why premium ---- */
+  .why-premium { padding: 44px 0 10px; border-top: 1px solid var(--line-soft); margin-top: 6px; }
+  .why-premium h2 { font-size: clamp(24px, 3.2vw, 32px); margin: 4px 0 22px; }
+  .upgrade-note {
+    display: flex; gap: 12px; align-items: flex-start; background: var(--ink-3);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 22px;
+  }
+  .upgrade-note svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--navy); margin-top: 2px; }
+  .upgrade-note p { font-size: 14px; color: var(--paper); }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fit-card { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .fit-premium { border-top: 3px solid var(--safety); }
+  .fit-standard { border-top: 3px solid var(--navy); }
+  .fit-label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+  .fit-premium .fit-label { color: var(--safety); }
+  .fit-standard .fit-label { color: var(--navy); }
+  .fit-list { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  .fit-list li { font-size: 13.5px; color: var(--paper-dim); padding-left: 16px; position: relative; }
+  .fit-list li::before { content: "—"; position: absolute; left: 0; color: var(--paper-faint); }
+  .fit-examples { font-size: 13px; color: var(--paper); padding-top: 14px; border-top: 1px solid var(--line-soft); }
+  .fit-examples strong { font-weight: 700; }
+
+  /* ---- highlights ---- */
+  .highlights { padding: 44px 0 10px; border-top: 1px solid var(--line-soft); margin-top: 6px; }
+  .highlights h2 { font-size: clamp(24px, 3.2vw, 32px); margin: 4px 0 0; }
+  .highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .highlight-card { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .highlight-icon {
+    width: 34px; height: 34px; border-radius: 8px; background: rgba(194,84,42,.1); color: var(--safety);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .highlight-icon svg { width: 18px; height: 18px; }
+  .highlight-card h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 6px; }
+  .highlight-card p { font-size: 13.5px; color: var(--paper-dim); }
+
+  /* ---- about founder ---- */
+  .about-founder { padding: 44px 0 10px; border-top: 1px solid var(--line-soft); margin-top: 6px; }
+  .founder-row { display: flex; gap: 20px; align-items: center; margin-top: 22px; }
+  .founder-photo {
+    width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0;
+    background: var(--ink-3); border: 1px dashed var(--paper-faint);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: var(--paper-faint); font-family: var(--mono); font-size: 10px; line-height: 1.3; padding: 6px;
+  }
+  .founder-row h2 { font-size: 20px; margin-bottom: 2px; }
+  .founder-loc {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--paper-faint); margin-bottom: 8px;
+  }
+  .founder-row .founder-bio { font-size: 14.5px; color: var(--paper-dim); max-width: 56ch; margin: 0; }
+  .timeline { margin-top: 26px; }
+  .timeline-list { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .timeline-list li {
+    display: flex; gap: 14px; align-items: baseline; font-size: 14.5px; color: var(--paper-dim);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; background: var(--ink-2);
+  }
+  .timeline-num {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0;
+    width: 20px; height: 20px; border-radius: 50%; background: var(--ink-3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .timeline-list strong { color: var(--paper); }
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; background: var(--safety);
+    color: #fff; font-weight: 700; font-size: 15px; padding: 14px 24px; border-radius: 999px;
+    text-decoration: none; transition: background .15s ease;
+  }
+  .btn-cta:hover { background: var(--safety-dim); }
+  .btn-cta svg { width: 18px; height: 18px; }
+
+  /* ---- footer ---- */
+  .catalog-footer { padding-top: 44px; border-top: 1px solid var(--line-soft); margin-top: 44px; }
+  .catalog-footer p { font-size: 13.5px; color: var(--paper-faint); max-width: 60ch; }
+  .catalog-footer .contact-line { color: var(--paper-dim); font-family: var(--mono); font-size: 13px; margin-top: 10px; }
+  .catalog-footer .contact-line span { color: var(--safety); }
+  .catalog-footer .contact-line a { color: inherit; text-decoration: none; }
+  .catalog-footer .contact-line a:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .founder-row { flex-direction: column; align-items: flex-start; text-align: left; }
+    .price-grid { grid-template-columns: 1fr; }
+    .fit-grid { grid-template-columns: 1fr; }
+    .highlight-grid { grid-template-columns: 1fr; }
+    .preview-frame { height: min(460px, 58vh); }
+    .browser-bar { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="brand-header">
+    <div class="brand-lockup">
+      <svg class="brand-mark" viewBox="0 0 24 24">
+        <rect class="solid" x="2" y="12" width="8" height="10" rx="2"/>
+        <rect class="outline" x="13" y="3" width="8" height="19" rx="2"/>
+      </svg>
+      <span class="brand-wordmark">Pantaz Co.</span>
+    </div>
+    <span class="brand-tag">Sites for local trades</span>
+  </header>
+
+  <section class="cover">
+    <h1>This is what <em>your</em> site could look like.</h1>
+    <p>Pick your trade below, then compare the Standard build against Premium. Everything you see runs off one page — no separate links to send. When something clicks, get in touch and I'll build the real thing around your business.</p>
+  </section>
+
+  <section class="base-not-ceiling">
+    <p class="bnc-eyebrow">A note before you pick</p>
+    <h2>This is the base — not the ceiling.</h2>
+    <p>Every color, section, and animation on this page is a starting point, not a limit. Want more motion than Premium shows here? Less? A different layout, extra pages, a custom interaction built just for you? All of it's on the table. Your site is built around your business, so it won't look like anyone else's — including the other four trades you can preview right here.</p>
+  </section>
+
+  <section class="picker">
+    <span class="picker-label">01 — Choose a trade</span>
+    <div class="swatch-row" id="swatchRow" role="tablist"></div>
+
+    <span class="picker-label">02 — Choose a tier</span>
+    <div class="price-grid" role="tablist">
+      <div class="price-card" id="cardStandard" role="tab" tabindex="0" aria-pressed="true">
+        <div class="price-tier-row"><p class="price-tier">Standard</p><span class="price-picked">SELECTED</span></div>
+        <p class="price-amount">$1,200</p>
+        <p class="price-sub">one-time build</p>
+        <p class="price-tagline">Fast, no-nonsense, mobile-first. What most leads should see first.</p>
+        <ul class="price-list">
+          <li>Fast, mobile-first single-page site</li>
+          <li>Services, testimonials, contact form &amp; map</li>
+          <li>Local SEO — titles, schema, matched NAP</li>
+          <li>Retainer optional — $100/mo covers hosting, edits &amp; support. Skip it and pay $45–150 per change instead.</li>
+        </ul>
+      </div>
+      <div class="price-card" id="cardPremium" role="tab" tabindex="0" aria-pressed="false">
+        <div class="price-tier-row"><p class="price-tier">Premium</p><span class="price-picked">SELECTED</span></div>
+        <p class="price-amount">$2,000</p>
+        <p class="price-sub">one-time build</p>
+        <p class="price-tagline">Same site, with scroll motion and animated stats that make your work stand out.</p>
+        <ul class="price-list">
+          <li>Everything in Standard</li>
+          <li>Scroll animation &amp; polished motion throughout</li>
+          <li>Photo direction — aerial/drone shots of your work</li>
+          <li>Retainer optional — $100/mo covers hosting, edits &amp; support. Skip it and pay $45–150 per change instead.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="founding-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+      <div>
+        <h3>Founding client discount</h3>
+        <p>I'm taking on my first five clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront). The founding discount requires the $100/mo retainer, with a 6-month minimum term. Outside the founding round, the retainer is optional — build at full price and skip the monthly if you'd rather.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-premium">
+    <span class="picker-label">03 — Do you actually need Premium?</span>
+    <h2>Not every business needs it — here's how to tell.</h2>
+
+    <div class="upgrade-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+      <p>Not sure yet? Start with Standard. Every Standard build can move to Premium later for the price difference — same content, same structure, just the motion and photo treatment layered on top. No rebuild required.</p>
+    </div>
+
+    <div class="fit-grid">
+      <div class="fit-card fit-premium">
+        <p class="fit-label">Who should go Premium</p>
+        <ul class="fit-list">
+          <li>The work itself is the pitch — before/after photos and finished spaces are what sells, and scroll motion makes people actually look at them.</li>
+          <li>Higher-ticket, considered purchases, where a polished site signals the same care as the work itself.</li>
+          <li>You're competing with other slick, well-funded businesses online, not just word of mouth.</li>
+          <li>Customers browse and compare before they call — they're not dialing mid-emergency.</li>
+        </ul>
+        <p class="fit-examples"><strong>Good fit:</strong> auto detailing, high-end landscaping &amp; hardscaping, custom home builders, boutique renovations.</p>
+      </div>
+      <div class="fit-card fit-standard">
+        <p class="fit-label">Who's fine with Standard</p>
+        <ul class="fit-list">
+          <li>The customer is searching because something's broken — they want speed and a phone number, not a design experience.</li>
+          <li>An older or referral-driven customer base, where extra motion can read as salesy instead of trustworthy.</li>
+          <li>Every animation adds load time — a real cost for someone on a bad connection mid-emergency.</li>
+          <li>You want it live fast and affordable, with the option to upgrade once it's already working.</li>
+        </ul>
+        <p class="fit-examples"><strong>Good fit:</strong> plumbing, HVAC repair, appliance repair, handyman, most cleaning services.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="preview-wrap">
+    <div class="browser-bar">
+      <span class="browser-url">🔒 <b id="barUrl">brighthorizoncleaning.com</b></span>
+      <div class="browser-actions">
+        <span class="browser-tag" id="barTag">STANDARD</span>
+        <a class="open-tab-btn" id="openTabBtn" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+          Open in new tab
+        </a>
+      </div>
+    </div>
+    <div class="preview-frame" id="previewFrame"><div id="demoHost"></div></div>
+  </section>
+
+  <section class="highlights">
+    <span class="picker-label">04 — Why this works</span>
+    <h2>Built to actually get you calls</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="phone"></div>
+        <h3>Click-to-call, everywhere</h3>
+        <p>Your number is tappable in the header, the hero, and a sticky bar on mobile — the single highest-value element on the page for someone searching mid-emergency.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="bolt"></div>
+        <h3>Fast, mobile-first</h3>
+        <p>No bloated framework, no font-loading delay. Built for a phone on a bad connection, not a laptop with time to browse.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="pin"></div>
+        <h3>Local SEO, built in</h3>
+        <p>Proper titles, schema markup, and a name/address/phone that matches your Google Business listing exactly — not bolted on after.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="star"></div>
+        <h3>Trust signals up front</h3>
+        <p>Years in business, reviews, licensing — the things that turn a stranger into a booked job, front and center instead of buried.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="camera"></div>
+        <h3>Your photos, not stock</h3>
+        <p>Real jobs, real crew, aerial shots if you've got the footage — not the same stock photography every competitor's site is already using.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon" data-icon="sliders"></div>
+        <h3>Built around you, not a template</h3>
+        <p>This catalog shows the format — your actual site gets your real services, copy, colors, sections, and animations. Add a page, drop one, dial the motion up or down, change anything. You're not locked into what's on screen here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-founder">
+    <span class="picker-label">05 — Who's building this</span>
+    <div class="founder-row">
+      <div class="founder-photo" role="img" aria-label="Placeholder — add a real headshot here">YOUR PHOTO HERE</div>
+      <div>
+        <h2>Nick Pantazopoulos</h2>
+        <p class="founder-loc">London, Ontario</p>
+        <p class="founder-bio">I build and run every site myself — no agency, no hand-off to someone overseas. If something needs fixing after launch, you're calling me directly.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <span class="picker-label">What it takes on your end</span>
+      <ol class="timeline-list">
+        <li><span class="timeline-num">1</span><span><strong>One 15-minute call</strong> — tell me about your business, service area, and what you want on the site.</span></li>
+        <li><span class="timeline-num">2</span><span><strong>Send a few photos</strong> — your crew, your work, your storefront. Phone photos are fine.</span></li>
+        <li><span class="timeline-num">3</span><span><strong>Live in about five days</strong> — you review it once, I make changes, it goes live.</span></li>
+      </ol>
+    </div>
+
+    <a href="tel:+18254383626" class="btn-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call or text (825) 438-3626
+    </a>
+  </section>
+
+  <footer class="catalog-footer">
+    <p>Every business, phone number, and photo above is placeholder demo content built to show the format — your actual site is custom-built around your real business, service area, and photos (including aerial shots, if you've got the drone footage for it).</p>
+    <p class="contact-line">Or reach me directly at <span><a href="tel:+18254383626">(825) 438-3626</a></span></p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ============================================================
+  // Icon library — shared line-icon set across all five trades.
+  // ============================================================
+  const icon = {
+    sparkle: `<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/>`,
+    bucket: `<path d="M4 8h16l-2 12H6L4 8z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>`,
+    move: `<path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>`,
+    office: `<rect x="4" y="2" width="16" height="20"/><path d="M9 22v-4h6v4M9 8h1M14 8h1M9 12h1M14 12h1"/>`,
+    dust: `<path d="M14.7 6.3a1 1 0 0 0-1.4 0l-1.4 1.4L2 17.6V22h4.4l9.9-9.9 1.4-1.4a1 1 0 0 0 0-1.4z"/><path d="M17.5 9.5L14.5 6.5"/>`,
+    window: `<rect x="3" y="3" width="18" height="18"/><path d="M12 3v18M3 12h18"/>`,
+    mower: `<circle cx="6" cy="17" r="2"/><circle cx="16" cy="17" r="2"/><path d="M6 17h6l4-8H8"/><path d="M14 9l4 2"/><path d="M4 5l4 1"/>`,
+    leaf: `<path d="M11 20A7 7 0 0 1 4 13V7a1 1 0 0 1 1-1h6a7 7 0 0 1 7 7v0a7 7 0 0 1-7 7z"/><path d="M4 13c6-1 9-4 10-10"/>`,
+    tree: `<circle cx="12" cy="8" r="5"/><path d="M12 13v8"/>`,
+    droplet: `<path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/>`,
+    layers: `<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>`,
+    wall: `<rect x="3" y="4" width="8" height="5"/><rect x="13" y="4" width="8" height="5"/><rect x="3" y="11" width="8" height="5"/><rect x="13" y="11" width="8" height="5"/><rect x="3" y="18" width="8" height="3"/><rect x="13" y="18" width="8" height="3"/>`,
+    hammer: `<path d="M14.5 3.5l6 6-3 3-6-6z"/><path d="M13 7L4 16l3 3 9-9"/><path d="M4 16l-1.5 4.5L7 19"/>`,
+    ruler: `<path d="M3 17l14-14 4 4-14 14z"/><path d="M14 6l2 2M11 9l2 2M8 12l2 2"/>`,
+    paintroller: `<rect x="4" y="4" width="12" height="6" rx="1"/><path d="M8 10v4a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-1"/><path d="M12 15v5"/>`,
+    grid: `<rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>`,
+    clipboard: `<rect x="5" y="4" width="14" height="17" rx="1"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M8 11h8M8 15h5"/>`,
+    flame: `<path d="M12 2s5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 2-1-3 0-6 1-8z"/>`,
+    snowflake: `<path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/>`,
+    duct: `<path d="M3 8h11a3 3 0 1 1-3 3"/><path d="M3 16h7a2 2 0 1 0-2-2"/>`,
+    thermometer: `<path d="M12 14V4a2 2 0 1 0-4 0v10a4 4 0 1 0 4 0z"/>`,
+    alert: `<path d="M12 3L2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/>`,
+    wrench: `<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6-2-2z"/>`,
+    toolbox: `<rect x="2" y="9" width="20" height="11" rx="1"/><path d="M8 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M2 13h20"/>`,
+    patch: `<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M5 5l14 14M19 5L5 19" stroke-dasharray="2 2"/>`,
+    cloth: `<path d="M4 4h12v6a2 2 0 0 0 2 2h2v8a2 2 0 0 1-2 2H4z"/><path d="M4 4l4 4M4 12h6M4 16h5"/>`,
+    tv: `<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/>`,
+    star: `<path fill="currentColor" stroke="none" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>`,
+    clock: `<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>`,
+    phone: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>`,
+    bolt: `<path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z"/>`,
+    pin: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
+    camera: `<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/>`,
+    sliders: `<path d="M4 6h9M17 6h3M4 12h5M13 12h7M4 18h12M20 18h0"/><circle cx="14" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="16" cy="18" r="2"/>`,
+  };
+  function svg(name, extra) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra||""}>${icon[name]||icon.sparkle}</svg>`;
+  }
+
+  // ============================================================
+  // Trade data — five verticals, same page structure, own copy.
+  // ============================================================
+  const trades = {
+    cleaning: {
+      label: "Cleaning", navIcon: "cloth", accent: "#0f5f4f", accentDark: "#0a4a3d", accentSoft: "#e8f2ef",
+      business: "Bright Horizon Cleaning", domain: "brighthorizoncleaning.com",
+      tagline: "Spotless homes, on your schedule.",
+      subheading: "Residential & light-commercial cleaning. Licensed, insured, and background-checked crews — the same two people every visit.",
+      phoneDisplay: "(519) 019-2847", phoneHref: "+15190192847",
+      area: "Brantford · Paris · Woodstock",
+      badges: ["Licensed & Insured", "Background-Checked Crews", "Satisfaction Guaranteed", "12 Years in Business"],
+      stats: [["12", "", "Years in business"], ["4800", "+", "Jobs completed"], ["5.0", "", "Average rating"]],
+      services: [
+        ["bucket", "Standard Home Cleaning", "Recurring weekly, bi-weekly, or monthly visits — kitchens, bathrooms, floors, and living spaces refreshed every time."],
+        ["sparkle", "Deep Cleaning", "A top-to-bottom reset for baseboards, inside appliances, grout, and every spot a regular clean skips."],
+        ["move", "Move-In / Move-Out", "Empty-house cleans that get security deposits back and new homes ready to live in from day one."],
+        ["office", "Light Commercial", "After-hours office and small-retail cleaning on a schedule that doesn't interrupt your business."],
+        ["dust", "Post-Construction Cleanup", "Dust, debris, and residue removal after a renovation or build, so the space is actually move-in ready."],
+        ["window", "Window & Gutter Add-On", "Bundle interior/exterior window washing or gutter clearing with any cleaning visit."],
+      ],
+      testimonials: [
+        ["Dana R.", "Brantford", "Same two people every visit, always on time, and the house smells amazing after. We haven't cancelled a single appointment in two years."],
+        ["Marcus T.", "Paris", "Booked a move-out clean with two days' notice and got our full deposit back. Communicated the whole way, showed up early."],
+        ["Priya S.", "Woodstock", "We switched from a national chain and it's not close. Same crew every time, they actually remember how we like things done."],
+      ],
+      gallery: ["Completed kitchen deep clean", "Aerial shot — office building exterior", "Before / after — move-out clean", "Crew on site, Brantford residence"],
+    },
+
+    landscaping: {
+      label: "Landscaping", navIcon: "mower", accent: "#3f7d32", accentDark: "#2f5f26", accentSoft: "#e6f0e2",
+      business: "Fieldstone Landscaping Co.", domain: "fieldstonelandscaping.com",
+      tagline: "Lawns and grounds, handled right.",
+      subheading: "Weekly maintenance to full hardscape builds. Licensed, insured, and locally owned — one crew that gets to know your property.",
+      phoneDisplay: "(226) 042-7710", phoneHref: "+12260427710",
+      area: "Woodstock · Ingersoll · Norwich",
+      badges: ["Licensed & Insured", "Free Estimates", "Locally Owned", "9 Years in Business"],
+      stats: [["9", "", "Years in business"], ["3200", "+", "Properties serviced"], ["4.9", "", "Average rating"]],
+      services: [
+        ["mower", "Mowing & Edging", "Weekly or bi-weekly visits that keep your lawn sharp without you thinking about it."],
+        ["leaf", "Seasonal Cleanup", "Spring and fall cleanups — leaves, debris, and beds reset for the season."],
+        ["tree", "Tree & Shrub Trimming", "Pruning and shaping that keeps growth healthy and your property looking intentional."],
+        ["droplet", "Irrigation & Sprinkler Service", "Installation, repair, and seasonal start-up/shutdown for sprinkler systems."],
+        ["layers", "Mulching & Bed Maintenance", "Fresh mulch, weeded beds, and clean edges that hold their look all season."],
+        ["wall", "Hardscaping & Patios", "Walkways, patios, and retaining walls built to outlast the warranty."],
+      ],
+      testimonials: [
+        ["Karen L.", "Woodstock", "They show up on the same day every week, rain or shine. Our lawn has never looked better."],
+        ["Tom H.", "Ingersoll", "Rebuilt our backyard patio in four days. Clean work, no surprises on the bill."],
+        ["Alicia D.", "Norwich", "Switched from a national franchise — actual humans who know our property now."],
+      ],
+      gallery: ["Freshly mowed front lawn", "Aerial shot — completed patio install", "Before / after — spring cleanup", "Crew trimming hedges on site"],
+    },
+
+    "general-contracting": {
+      label: "General Contracting", navIcon: "ruler", accent: "#b5651d", accentDark: "#8f4f16", accentSoft: "#f3e6d7",
+      business: "Ironclad Builders", domain: "ironcladbuilders.com",
+      tagline: "From blueprint to walkthrough.",
+      subheading: "Remodels, additions, and structural work — licensed, bonded, and permit-ready from day one.",
+      phoneDisplay: "(519) 088-3391", phoneHref: "+15190883391",
+      area: "Brantford · Tillsonburg · Paris",
+      badges: ["Licensed & Bonded", "Fully Insured", "Permit-Ready", "16 Years in Business"],
+      stats: [["16", "", "Years in business"], ["210", "+", "Projects completed"], ["4.9", "", "Average rating"]],
+      services: [
+        ["hammer", "Kitchen & Bath Remodels", "Full gut renovations or targeted updates, managed start to finish."],
+        ["office", "Room Additions", "Extra square footage that matches your home's structure and style."],
+        ["ruler", "Decks & Framing", "Framing, decks, and structural work built to code, not just to look right."],
+        ["paintroller", "Drywall & Painting", "Clean drywall finishing and paint work that doesn't show the seams."],
+        ["grid", "Flooring Installation", "Hardwood, tile, and LVP installed level and true."],
+        ["clipboard", "Permits & Design Consults", "We handle permitting and walk you through design decisions before work starts."],
+      ],
+      testimonials: [
+        ["Renee P.", "Brantford", "Ironclad pulled our permits, kept the timeline, and the kitchen came in on budget."],
+        ["Mike S.", "Tillsonburg", "Added a full second-floor bedroom. Zero surprise change orders."],
+        ["Janelle O.", "Paris", "First contractor who actually returned calls the same day."],
+      ],
+      gallery: ["Completed kitchen remodel", "Aerial shot — framed addition", "Before / after — finished basement", "Crew on site, foundation pour"],
+    },
+
+    hvac: {
+      label: "HVAC", navIcon: "thermometer", accent: "#1c6ea4", accentDark: "#15537c", accentSoft: "#dcedf6",
+      business: "Steady State HVAC", domain: "steadystatehvac.com",
+      tagline: "Heat when it's cold. Cool when it's not.",
+      subheading: "Repair, install, and maintenance for every major system — licensed, EPA certified, and on call 24/7.",
+      phoneDisplay: "(226) 061-4420", phoneHref: "+12260614420",
+      area: "Ingersoll · Norwich · Tillsonburg",
+      badges: ["Licensed & Insured", "EPA Certified", "24/7 Emergency Line", "14 Years in Business"],
+      stats: [["14", "", "Years in business"], ["6000", "+", "Service calls"], ["4.9", "", "Average rating"]],
+      services: [
+        ["flame", "Furnace Repair & Install", "Same-day repair calls and clean installs backed by a labor warranty."],
+        ["snowflake", "AC Repair & Install", "Diagnostics, repair, and full system replacement for every major brand."],
+        ["duct", "Duct Cleaning & Sealing", "Cleaner air and lower bills from ducts that actually seal."],
+        ["thermometer", "Thermostat & Smart Upgrades", "Smart thermostat install and setup, synced to how your house actually runs."],
+        ["clock", "Seasonal Maintenance Plans", "Spring and fall tune-ups that catch problems before they're emergencies."],
+        ["alert", "24/7 Emergency Service", "No-heat and no-AC calls answered day or night, not just business hours."],
+      ],
+      testimonials: [
+        ["Dave R.", "Ingersoll", "Furnace died on the coldest night of the year. They picked up at 11pm and fixed it by noon."],
+        ["Sonya K.", "Norwich", "Replaced our whole system in a day. Explained every option, no upsell pressure."],
+        ["Andre M.", "Tillsonburg", "On the maintenance plan for three years now — zero breakdowns since."],
+      ],
+      gallery: ["Furnace install, completed", "Aerial shot — rooftop commercial unit", "Before / after — ductwork replacement", "Tech on an emergency call"],
+    },
+
+    handyman: {
+      label: "Handyman", navIcon: "hammer", accent: "#c1440e", accentDark: "#963409", accentSoft: "#f5e2d8",
+      business: "No Job Too Small Handyman", domain: "nojobtoosmall.com",
+      tagline: "The list you've been putting off, finally done.",
+      subheading: "One call for the whole list — repairs, assembly, patching, and small installs, done right the first time.",
+      phoneDisplay: "(519) 077-9963", phoneHref: "+15190779963",
+      area: "Brantford · Woodstock · Tillsonburg",
+      badges: ["Licensed & Insured", "Same-Week Scheduling", "No Job Too Small", "7 Years in Business"],
+      stats: [["7", "", "Years in business"], ["2500", "+", "Jobs completed"], ["4.8", "", "Average rating"]],
+      services: [
+        ["wrench", "General Repairs", "The whole list in one visit — squeaky doors, loose railings, running toilets."],
+        ["toolbox", "Furniture & Fixture Assembly", "Flat-pack furniture, shelving, and fixtures assembled and mounted right."],
+        ["patch", "Drywall Patching & Touch-ups", "Holes, dents, and scuffs patched and painted to disappear."],
+        ["paintroller", "Painting & Touch-ups", "Interior touch-ups to full rooms, clean lines every time."],
+        ["tv", "TV Mounting & Small Electrical", "TV mounts, light fixtures, and outlet swaps done safely and to code."],
+        ["clipboard", "Punch Lists for Realtors", "Pre-listing repair lists knocked out fast, on a realtor's timeline."],
+      ],
+      testimonials: [
+        ["Beth C.", "Brantford", "Had a list of 11 small things sitting for a year. Done in one afternoon."],
+        ["Jordan T.", "Woodstock", "Mounted three TVs and fixed a leaking faucet same visit. Fair price, no fuss."],
+        ["Carla V.", "Tillsonburg", "Our go-to for anything that comes up. Always on time, always fair."],
+      ],
+      gallery: ["Completed shelving install", "Aerial shot — exterior touch-up job", "Before / after — patched & painted wall", "On-site punch list walkthrough"],
+    },
+  };
+
+  // ============================================================
+  // Demo-site builder — returns markup + style for one trade/tier.
+  // Rendered into a Shadow Root, so class names stay unscoped
+  // and identical to a real standalone build.
+  // ============================================================
+  function buildDemoCSS(data, tier) {
+    const isPremium = tier === "premium";
+    return `
+      .site { all: initial; }
+      .site {
+        container-type: inline-size; container-name: demo;
+        display: block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #16201d; background: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased;
+        --accent: ${data.accent}; --accent-dark: ${data.accentDark}; --accent-soft: ${data.accentSoft};
+        --ink: #16201d; --ink-soft: #4b5854; --paper: #fff; --paper-alt: #f6f7f5; --border: #dfe4e1; --radius: 10px;
+        --ease: cubic-bezier(.2,.7,.2,1);
+      }
+      .site * { box-sizing: border-box; }
+      .site img, .site svg { display: block; max-width: 100%; }
+      .site a { color: var(--accent); }
+      .site h1, .site h2, .site h3 { line-height: 1.15; margin: 0 0 .5em; font-weight: 800; }
+      .site p { margin: 0 0 1em; color: var(--ink-soft); }
+      .site .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+      .site .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: var(--radius); font-weight: 700; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 15px; transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease); }
+      .site .btn-primary { background: var(--accent); color: #fff; }
+      .site .btn-primary:hover { background: var(--accent-dark); ${isPremium ? "transform: translateY(-1px);" : ""} }
+      .site .btn-outline { border-color: var(--accent); color: var(--accent); background: transparent; }
+      .site .btn-outline:hover { background: var(--accent-soft); }
+      .site .btn-lg { padding: 15px 28px; font-size: 16px; }
+      .site .btn-block { width: 100%; }
+      .site .site-header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); backdrop-filter: saturate(180%) blur(6px); border-bottom: 1px solid var(--border); }
+      .site .header-row { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+      .site .logo { font-weight: 800; font-size: 18px; color: var(--ink); text-decoration: none; }
+      .site .logo span { color: var(--accent); }
+      .site .nav { display: flex; gap: 22px; }
+      .site .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; }
+      .site .nav a:hover { color: var(--accent); }
+      .site .header-actions { display: flex; align-items: center; gap: 10px; }
+      .site .phone-pill { display: inline-flex; align-items: center; gap: 7px; background: var(--accent); color: #fff; padding: 9px 14px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px; white-space: nowrap; }
+      .site .phone-pill:hover { background: var(--accent-dark); }
+      .site .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 6px; cursor: pointer; }
+      .site .nav-toggle span { width: 20px; height: 2px; background: var(--ink); display: block; }
+      .site .hero { position: relative; padding: 44px 0 52px; overflow: hidden; background: var(--paper-alt); border-bottom: 1px solid var(--border); }
+      ${isPremium ? `.site .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(600px 400px at 85% -10%, var(--accent-soft), transparent 60%), radial-gradient(500px 350px at -5% 110%, var(--accent-soft), transparent 60%); }` : ""}
+      .site .hero-row { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: center; }
+      .site .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 12px; margin-bottom: 8px; }
+      .site .hero h1 { font-size: clamp(26px, 5cqi, 40px); }
+      .site .lede { font-size: 15.5px; max-width: 46ch; }
+      .site .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+      .site .badge-row { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+      .site .badge-row li { background: var(--accent-soft); color: var(--accent-dark); font-weight: 700; font-size: 12px; padding: 6px 11px; border-radius: 999px; }
+      .site .hero-photo { aspect-ratio: 4/3; background: repeating-linear-gradient(135deg, #e3e9e6, #e3e9e6 10px, #dbe2de 10px, #dbe2de 20px); border-radius: var(--radius); border: 1px dashed #b7c2bd; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; color: var(--ink-soft); font-size: 13px; font-weight: 600; ${isPremium ? "box-shadow: 0 24px 48px -24px rgba(0,0,0,.25);" : ""} }
+      .site .services, .site .about, .site .gallery, .site .reviews, .site .quote { padding: 52px 0; scroll-margin-top: 80px; }
+      .site .services h2, .site .about h2, .site .gallery h2, .site .reviews h2, .site .quote h2 { font-size: clamp(22px, 4cqi, 28px); }
+      .site .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+      .site .service-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; background: var(--paper); transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+      ${isPremium ? `.site .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -20px rgba(0,0,0,.25); }` : ""}
+      .site .service-icon { width: 40px; height: 40px; border-radius: 9px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+      .site .service-icon svg { width: 20px; height: 20px; }
+      .site .service-card h3 { font-size: 16px; margin-bottom: 5px; }
+      .site .service-card p { font-size: 13.5px; margin: 0; }
+      .site .about { background: var(--paper-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .site .about-row { display: grid; grid-template-columns: .8fr 1.2fr; gap: 34px; align-items: center; }
+      .site .about-photo { aspect-ratio: 1/1; border-radius: var(--radius); border: 1px dashed #b7c2bd; background: repeating-linear-gradient(135deg, #e3e9e6, #e3e9e6 10px, #dbe2de 10px, #dbe2de 20px); }
+      .site .stat-row { list-style: none; display: flex; gap: 26px; padding: 0; margin: 16px 0; }
+      .site .stat-row li { display: flex; flex-direction: column; }
+      .site .stat-row strong { font-size: 25px; color: var(--accent); font-variant-numeric: tabular-nums; }
+      .site .stat-row span { font-size: 12px; color: var(--ink-soft); }
+      .site .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+      .site .gallery-item { aspect-ratio: 4/3; border-radius: var(--radius); border: 1px dashed #b7c2bd; background: repeating-linear-gradient(135deg, #e3e9e6, #e3e9e6 10px, #dbe2de 10px, #dbe2de 20px); display: flex; align-items: flex-end; padding: 9px; font-size: 11px; font-weight: 600; color: var(--ink-soft); }
+      .site .reviews { background: var(--paper-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .site .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+      .site .review-card { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+      .site .stars { display: flex; gap: 3px; color: #e0a300; margin-bottom: 10px; }
+      .site .stars svg { width: 14px; height: 14px; }
+      .site .review-card p.quote-text { color: var(--ink); font-size: 14px; }
+      .site .review-name { font-weight: 700; font-size: 13.5px; }
+      .site .review-loc { font-size: 12.5px; color: var(--ink-soft); }
+      .site .quote-row { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+      .site .quote-form { background: var(--paper-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+      .site .form-row { margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
+      .site .form-row label { font-weight: 700; font-size: 13px; }
+      .site .form-row input, .site .form-row select, .site .form-row textarea { font: inherit; padding: 10px 11px; border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--ink); }
+      .site .form-row input:focus, .site .form-row select:focus, .site .form-row textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+      .site .form-status { font-size: 13px; font-weight: 700; min-height: 1.2em; margin: 8px 0 0; color: var(--accent-dark); }
+      .site .map-placeholder { aspect-ratio: 16/7; border-radius: var(--radius); border: 1px dashed #b7c2bd; background: repeating-linear-gradient(135deg, #e3e9e6, #e3e9e6 10px, #dbe2de 10px, #dbe2de 20px); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); font-size: 13px; font-weight: 600; text-align: center; padding: 12px; }
+      .site .site-footer { background: var(--ink); color: #cfd8d4; padding: 28px 0 88px; }
+      .site .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .site .footer-brand { color: #fff; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+      .site .site-footer p { color: #a9b5b0; margin: 0 0 2px; font-size: 13px; }
+      .site .site-footer .btn-outline { border-color: #cfd8d4; color: #fff; }
+      .site .mobile-call-bar { display: none; }
+      ${isPremium ? `
+      .site [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+      .site [data-reveal].in-view { opacity: 1; transform: translateY(0); }
+      .site [data-reveal][data-reveal-delay="1"] { transition-delay: .1s; }
+      ` : ""}
+      @container demo (max-width: 780px) {
+        .site .hero-row, .site .about-row, .site .quote-row { grid-template-columns: 1fr; }
+        .site .about-photo, .site .hero-photo { order: -1; }
+        .site .service-grid { grid-template-columns: repeat(2, 1fr); }
+        .site .review-grid { grid-template-columns: 1fr; }
+        .site .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @container demo (max-width: 560px) {
+        .site .nav { position: fixed; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 14px 20px; border-bottom: 1px solid var(--border); gap: 12px; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .15s ease, transform .15s ease; }
+        .site .nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .site .nav-toggle { display: flex; }
+        .site .header-actions .phone-pill span { display: none; }
+        .site .service-grid { grid-template-columns: 1fr; }
+        .site .site-footer { padding-bottom: 30px; }
+        .site .mobile-call-bar { display: block; position: sticky; bottom: 0; z-index: 20; background: var(--accent); border-top: 1px solid var(--accent-dark); margin-top: -1px; }
+        .site .mobile-call-bar a { display: flex; align-items: center; justify-content: center; gap: 9px; color: #fff; text-decoration: none; font-weight: 800; font-size: 15px; padding: 13px 0; }
+      }
+    `;
+  }
+
+  function buildDemoHTML(data, tier) {
+    const r = tier === "premium" ? `data-reveal` : ``;
+    const rd = tier === "premium" ? `data-reveal data-reveal-delay="1"` : ``;
+    return `
+      <div class="site">
+        <header class="site-header">
+          <div class="wrap header-row">
+            <a href="#" class="logo">${data.business.split(" ")[0]} <span>${data.business.split(" ").slice(1).join(" ")}</span></a>
+            <nav class="nav" id="navMenu">
+              <a href="#svc-${data.navIcon}">Services</a><a href="#about-${data.navIcon}">About</a><a href="#reviews-${data.navIcon}">Reviews</a><a href="#quote-${data.navIcon}">Get a Quote</a>
+            </nav>
+            <div class="header-actions">
+              <a class="phone-pill" href="tel:${data.phoneHref}">${svg("phone")}<span>${data.phoneDisplay}</span></a>
+              <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+          </div>
+        </header>
+
+        <section class="hero">
+          ${tier === "premium" ? `<div class="hero-bg"></div>` : ""}
+          <div class="wrap hero-row">
+            <div ${r}>
+              <p class="eyebrow">${data.area}</p>
+              <h1>${data.tagline}</h1>
+              <p class="lede">${data.subheading}</p>
+              <div class="hero-ctas">
+                <a href="tel:${data.phoneHref}" class="btn btn-primary btn-lg">Call ${data.phoneDisplay}</a>
+                <a href="#quote-${data.navIcon}" class="btn btn-outline btn-lg">Get a Free Quote</a>
+              </div>
+              <ul class="badge-row">${data.badges.map(b => `<li>${b}</li>`).join("")}</ul>
+            </div>
+            <div class="hero-photo" ${rd}>Real job photo goes here<br>(e.g. drone shot, or a finished job)</div>
+          </div>
+        </section>
+
+        <section class="services" id="svc-${data.navIcon}">
+          <div class="wrap">
+            <h2 ${r}>What we do</h2>
+            <div class="service-grid">
+              ${data.services.map(([ic, title, desc], i) => `
+                <div class="service-card" ${tier === "premium" ? `data-reveal data-reveal-delay="${i % 2}"` : ""}>
+                  <div class="service-icon">${svg(ic)}</div>
+                  <h3>${title}</h3><p>${desc}</p>
+                </div>`).join("")}
+            </div>
+          </div>
+        </section>
+
+        <section class="about" id="about-${data.navIcon}">
+          <div class="wrap about-row">
+            <div class="about-photo" ${r}></div>
+            <div ${rd}>
+              <h2>${data.stats[0][0]} years, one crew, no surprises</h2>
+              <p>${data.business} has served ${data.area} for ${data.stats[0][0]} years. Every visit is the same crew — no rotating strangers, no re-explaining the job.</p>
+              <ul class="stat-row">
+                ${data.stats.map(([n, suf, label]) => `<li><strong>${n}${suf}</strong><span>${label}</span></li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery">
+          <div class="wrap">
+            <h2 ${r}>Recent work</h2>
+            <div class="gallery-grid">${data.gallery.map(g => `<div class="gallery-item">${g}</div>`).join("")}</div>
+          </div>
+        </section>
+
+        <section class="reviews" id="reviews-${data.navIcon}">
+          <div class="wrap">
+            <h2 ${r}>What customers say</h2>
+            <div class="review-grid">
+              ${data.testimonials.map(([name, loc, quote]) => `
+                <div class="review-card">
+                  <div class="stars">${svg("star").repeat(5)}</div>
+                  <p class="quote-text">&ldquo;${quote}&rdquo;</p>
+                  <p class="review-name">${name}</p><p class="review-loc">${loc}</p>
+                </div>`).join("")}
+            </div>
+          </div>
+        </section>
+
+        <section class="quote" id="quote-${data.navIcon}">
+          <div class="wrap quote-row">
+            <div ${r}>
+              <h2>Get a free quote</h2>
+              <p>Tell us what you need and we'll call back same-day.</p>
+              <a href="tel:${data.phoneHref}" class="btn btn-primary btn-lg">Or just call ${data.phoneDisplay}</a>
+            </div>
+            <form class="quote-form" ${rd}>
+              <div class="form-row"><label>Name</label><input type="text" /></div>
+              <div class="form-row"><label>Phone</label><input type="tel" /></div>
+              <div class="form-row"><label>What do you need?</label>
+                <select>${data.services.map(s => `<option>${s[1]}</option>`).join("")}</select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Request My Quote</button>
+              <p class="form-status"></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="services" style="padding-top:0">
+          <div class="wrap">
+            <div class="map-placeholder" ${r}>Live Google Maps embed + service-area radius appears here on the real site</div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <div class="wrap footer-row">
+            <div>
+              <p class="footer-brand">${data.business}</p>
+              <p>${data.area}</p>
+            </div>
+            <a href="tel:${data.phoneHref}" class="btn btn-outline">Call ${data.phoneDisplay}</a>
+          </div>
+        </footer>
+
+        <div class="mobile-call-bar"><a href="tel:${data.phoneHref}">${svg("phone")}Call Now — ${data.phoneDisplay}</a></div>
+      </div>
+    `;
+  }
+
+  function buildStandaloneScript(tier) {
+    return `
+<script>
+(function(){
+  var toggle = document.getElementById("navToggle");
+  var nav = document.getElementById("navMenu");
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+  var site = document.querySelector(".site");
+  var scrollContainer = document.scrollingElement;
+  if (site) {
+    site.addEventListener("click", function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      var id = link.getAttribute("href").slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      if (nav) nav.classList.remove("open");
+      // scrollContainer is document.scrollingElement here, whose own
+      // getBoundingClientRect().top is -scrollY (not 0) once scrolled —
+      // target's rect is already viewport-relative, so no containerTop term.
+      var targetTop = target.getBoundingClientRect().top;
+      var scrollMarginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      scrollContainer.scrollTop += targetTop - scrollMarginTop;
+    });
+  }
+  var form = document.querySelector(".quote-form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      form.querySelector(".form-status").textContent = "Thanks — we'll call you back shortly.";
+    });
+  }
+  ${tier === "premium" ? `
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in-view"); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in-view"); });
+  }` : ""}
+})();
+<\/script>`;
+  }
+
+  function buildStandaloneDoc(data, tier) {
+    return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${data.business} — ${tier === "premium" ? "Premium" : "Standard"} demo</title>
+<style>html,body{margin:0;}html{scroll-behavior:smooth;}${buildDemoCSS(data, tier)}</style>
+</head>
+<body>${buildDemoHTML(data, tier)}${buildStandaloneScript(tier)}</body>
+</html>`;
+  }
+
+  function wireDemo(root, tier) {
+    const toggle = root.getElementById("navToggle");
+    const nav = root.getElementById("navMenu");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const open = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+    }
+    // Native #hash navigation (and scrollIntoView) doesn't reliably compute
+    // the right scroll container across this shadow-DOM boundary, so
+    // jump-links are scrolled manually using measured positions — this also
+    // accounts for scroll-margin-top so the target clears the sticky header
+    // instead of landing underneath it.
+    const site = root.querySelector(".site");
+    const scrollContainer = root.host || document.scrollingElement;
+    if (site) {
+      site.addEventListener("click", e => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const id = link.getAttribute("href").slice(1);
+        const target = root.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        if (nav) nav.classList.remove("open");
+        const targetTop = target.getBoundingClientRect().top;
+        const containerTop = scrollContainer.getBoundingClientRect().top;
+        const scrollMarginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+        scrollContainer.scrollTop += targetTop - containerTop - scrollMarginTop;
+      });
+    }
+    const form = root.querySelector(".quote-form");
+    if (form) {
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const status = form.querySelector(".form-status");
+        status.textContent = "Thanks — we'll call you back shortly.";
+      });
+    }
+    if (tier === "premium") {
+      // Embedded in a shadow-DOM widget inside a scrollable preview pane —
+      // cross-boundary IntersectionObserver roots aren't reliable here, so
+      // reveal on render (staggered) instead of on-scroll.
+      const revealEls = Array.from(root.querySelectorAll("[data-reveal]"));
+      revealEls.forEach((el, i) => {
+        setTimeout(() => el.classList.add("in-view"), 40 + i * 35);
+      });
+    }
+  }
+
+  // ============================================================
+  // Controller
+  // ============================================================
+  const state = { trade: "cleaning", tier: "standard" };
+  const swatchRow = document.getElementById("swatchRow");
+  const demoHost = document.getElementById("demoHost");
+  const shadow = demoHost.attachShadow({ mode: "open" });
+  const cardStandard = document.getElementById("cardStandard");
+  const cardPremium = document.getElementById("cardPremium");
+  const barUrl = document.getElementById("barUrl");
+  const barTag = document.getElementById("barTag");
+  const previewFrame = document.getElementById("previewFrame");
+  const openTabBtn = document.getElementById("openTabBtn");
+  let lastBlobUrl = null;
+
+  document.querySelectorAll(".highlight-icon[data-icon]").forEach(el => {
+    el.innerHTML = svg(el.dataset.icon);
+  });
+
+  Object.keys(trades).forEach(key => {
+    const t = trades[key];
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "swatch"; btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-pressed", key === state.trade ? "true" : "false");
+    btn.style.setProperty("--swatch-accent", t.accent);
+    btn.innerHTML = `${svg(t.navIcon)}<span class="swatch-dot" style="background:${t.accent}"></span>${t.label}`;
+    btn.addEventListener("click", () => { state.trade = key; render(); });
+    swatchRow.appendChild(btn);
+  });
+
+  [[cardStandard, "standard"], [cardPremium, "premium"]].forEach(([card, tier]) => {
+    card.addEventListener("click", () => { state.tier = tier; render(); });
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); state.tier = tier; render(); }
+    });
+  });
+
+  function render() {
+    const data = trades[state.trade];
+    shadow.innerHTML = `<style>${buildDemoCSS(data, state.tier)}</style>${buildDemoHTML(data, state.tier)}`;
+    wireDemo(shadow, state.tier);
+
+    Array.from(swatchRow.children).forEach((btn, i) => {
+      const key = Object.keys(trades)[i];
+      btn.setAttribute("aria-pressed", key === state.trade ? "true" : "false");
+    });
+    cardStandard.setAttribute("aria-pressed", state.tier === "standard" ? "true" : "false");
+    cardPremium.setAttribute("aria-pressed", state.tier === "premium" ? "true" : "false");
+    barUrl.textContent = data.domain;
+    barTag.textContent = state.tier.toUpperCase();
+    previewFrame.style.setProperty("--live-accent", data.accent);
+    previewFrame.scrollTop = 0;
+
+    if (lastBlobUrl) URL.revokeObjectURL(lastBlobUrl);
+    lastBlobUrl = URL.createObjectURL(new Blob([buildStandaloneDoc(data, state.tier)], { type: "text/html" }));
+    openTabBtn.href = lastBlobUrl;
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>
