@@ -108,9 +108,12 @@
   .browser-url { color: var(--paper-dim); }
   .browser-url b { color: var(--paper); font-weight: 600; }
   .browser-tag {
-    font-size: 11px; letter-spacing: .08em; padding: 3px 8px; border: 1px solid var(--live-accent, var(--safety));
-    border-radius: 999px; color: var(--live-accent, var(--safety));
+    font-family: var(--mono); font-size: 11px; letter-spacing: .08em; padding: 3px 8px; border: 1px solid var(--live-accent, var(--safety));
+    border-radius: 999px; color: var(--live-accent, var(--safety)); background: none; cursor: pointer;
+    transition: background .15s ease, color .15s ease;
   }
+  .browser-tag:hover { background: var(--live-accent, var(--safety)); color: #fff; }
+  .browser-tag:focus-visible { outline: 2px solid var(--live-accent, var(--safety)); outline-offset: 2px; }
   .browser-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
   .open-tab-btn {
     font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--paper);
@@ -356,7 +359,7 @@
     <div class="browser-bar">
       <span class="browser-url">🔒 <b id="barUrl">brighthorizoncleaning.com</b></span>
       <div class="browser-actions">
-        <span class="browser-tag" id="barTag">STANDARD</span>
+        <button type="button" class="browser-tag" id="barTag" aria-label="Switch to Premium">STANDARD</button>
         <a class="open-tab-btn" id="openTabBtn" href="#" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
           Open in new tab
@@ -1006,6 +1009,11 @@
     });
   });
 
+  barTag.addEventListener("click", () => {
+    state.tier = state.tier === "standard" ? "premium" : "standard";
+    render();
+  });
+
   function render() {
     const data = trades[state.trade];
     shadow.innerHTML = `<style>${buildDemoCSS(data, state.tier)}</style>${buildDemoHTML(data, state.tier)}`;
@@ -1019,6 +1027,7 @@
     cardPremium.setAttribute("aria-pressed", state.tier === "premium" ? "true" : "false");
     barUrl.textContent = data.domain;
     barTag.textContent = state.tier.toUpperCase();
+    barTag.setAttribute("aria-label", state.tier === "standard" ? "Switch to Premium" : "Switch to Standard");
     previewFrame.style.setProperty("--live-accent", data.accent);
     previewFrame.scrollTop = 0;
 
