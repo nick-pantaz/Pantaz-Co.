@@ -127,10 +127,18 @@
   .open-tab-btn:hover { border-color: var(--live-accent, var(--safety)); color: var(--live-accent, var(--safety)); }
   .open-tab-btn svg { width: 13px; height: 13px; }
   .preview-frame {
+    position: relative;
     height: 720px; overflow: hidden; border: 2px solid var(--live-accent, var(--line));
     border-radius: 0 0 var(--radius) var(--radius);
     box-shadow: 0 0 0 1px var(--ink-2), 0 30px 60px -30px rgba(28,27,25,.25);
     background: #fff;
+  }
+  .could-be-yours {
+    position: absolute; top: 16px; right: -6px; z-index: 5; pointer-events: none;
+    background: var(--safety); color: #fff; font-family: var(--mono); font-weight: 700;
+    font-size: 12.5px; letter-spacing: .04em; padding: 7px 14px;
+    border-radius: 999px 0 0 999px; box-shadow: 0 10px 20px -8px rgba(0,0,0,.35);
+    transform: rotate(-3deg);
   }
   .preview-frame > div { height: 100%; overflow-y: auto; scroll-behavior: smooth; }
 
@@ -210,10 +218,9 @@
   .founder-row { display: flex; gap: 20px; align-items: center; margin-top: 22px; }
   .founder-photo {
     width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0;
-    background: var(--ink-3); border: 1px dashed var(--paper-faint);
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    color: var(--paper-faint); font-family: var(--mono); font-size: 10px; line-height: 1.3; padding: 6px;
+    overflow: hidden; border: 1px solid var(--line);
   }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .founder-row h2 { font-size: 20px; margin-bottom: 2px; }
   .founder-loc {
     font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
@@ -239,6 +246,15 @@
   }
   .btn-cta:hover { background: var(--safety-dim); }
   .btn-cta svg { width: 18px; height: 18px; }
+  .btn-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 24px; }
+  .btn-cta-row .btn-cta { margin-top: 0; }
+  .btn-cta-outline {
+    display: inline-flex; align-items: center; gap: 9px; background: none; border: 1px solid var(--line);
+    color: var(--paper); font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px;
+    text-decoration: none; transition: border-color .15s ease, color .15s ease;
+  }
+  .btn-cta-outline:hover { border-color: var(--safety); color: var(--safety); }
+  .btn-cta-outline svg { width: 18px; height: 18px; }
 
   /* ---- footer ---- */
   .catalog-footer { padding-top: 44px; border-top: 1px solid var(--line-soft); margin-top: 44px; }
@@ -255,6 +271,7 @@
     .highlight-grid { grid-template-columns: 1fr; }
     .preview-frame { height: min(460px, 58vh); }
     .browser-bar { font-size: 11px; }
+    .could-be-yours { right: 10px; font-size: 11px; padding: 6px 11px; }
   }
 </style>
 </head>
@@ -323,7 +340,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
       <div>
         <h3>Founding client discount</h3>
-        <p>I'm taking on my first five clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront). The founding discount requires the $100/mo retainer, with a 6-month minimum term. Outside the founding round, the retainer is optional — build at full price and skip the monthly if you'd rather.</p>
+        <p>I'm taking on my first ten clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront) — no retainer required. Once the founding round is full, pricing returns to full price with an optional $100/mo retainer for hosting, edits, and support.</p>
       </div>
     </div>
   </section>
@@ -372,7 +389,10 @@
         </a>
       </div>
     </div>
-    <div class="preview-frame" id="previewFrame"><div id="demoHost"></div></div>
+    <div class="preview-frame" id="previewFrame">
+      <span class="could-be-yours">This could be yours →</span>
+      <div id="demoHost"></div>
+    </div>
   </section>
 
   <section class="highlights">
@@ -415,7 +435,7 @@
   <section class="about-founder">
     <span class="picker-label">05 — Who's building this</span>
     <div class="founder-row">
-      <div class="founder-photo" role="img" aria-label="Placeholder — add a real headshot here">YOUR PHOTO HERE</div>
+      <div class="founder-photo"><img src="headshot.png" alt="Nick Pantazopoulos" /></div>
       <div>
         <h2>Nick Pantazopoulos</h2>
         <p class="founder-loc">London, Ontario</p>
@@ -432,15 +452,21 @@
       </ol>
     </div>
 
-    <a href="tel:+18254383626" class="btn-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call or text (825) 438-3626
-    </a>
+    <div class="btn-cta-row">
+      <a href="tel:+18254383626" class="btn-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call or text (825) 438-3626
+      </a>
+      <a href="mailto:Nick@Pantaz.ca" class="btn-cta-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Nick@Pantaz.ca
+      </a>
+    </div>
   </section>
 
   <footer class="catalog-footer">
     <p>Every business, phone number, and photo above is placeholder demo content built to show the format — your actual site is custom-built around your real business, service area, and photos.</p>
-    <p class="contact-line">Or reach me directly at <span><a href="tel:+18254383626">(825) 438-3626</a></span></p>
+    <p class="contact-line">Or reach me directly at <span><a href="tel:+18254383626">(825) 438-3626</a></span> · <a href="mailto:Nick@Pantaz.ca">Nick@Pantaz.ca</a></p>
   </footer>
 
 </div>
@@ -487,6 +513,7 @@
     pin: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`,
     camera: `<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/>`,
     sliders: `<path d="M4 6h9M17 6h3M4 12h5M13 12h7M4 18h12M20 18h0"/><circle cx="14" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="16" cy="18" r="2"/>`,
+    car: `<path d="M3 15l1.5-4A2 2 0 0 1 6.4 9.5h11.2A2 2 0 0 1 19.5 11l1.5 4"/><path d="M2 15h20v2.5a1 1 0 0 1-1 1h-1.5M2 15v2.5a1 1 0 0 0 1 1h1.5"/><circle cx="7" cy="18.5" r="1.5"/><circle cx="17" cy="18.5" r="1.5"/>`,
   };
   function svg(name, extra) {
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra||""}>${icon[name]||icon.sparkle}</svg>`;
@@ -518,7 +545,7 @@
         ["Marcus T.", "Paris", "Booked a move-out clean with two days' notice and got our full deposit back. Communicated the whole way, showed up early."],
         ["Priya S.", "Woodstock", "We switched from a national chain and it's not close. Same crew every time, they actually remember how we like things done."],
       ],
-      gallery: ["Completed kitchen deep clean", "Aerial shot — office building exterior", "Before / after — move-out clean", "Crew on site, Brantford residence"],
+      gallery: ["Completed kitchen deep clean", "Completed office building exterior", "Before / after — move-out clean", "Crew on site, Brantford residence"],
     },
 
     landscaping: {
@@ -543,7 +570,7 @@
         ["Tom H.", "Ingersoll", "Rebuilt our backyard patio in four days. Clean work, no surprises on the bill."],
         ["Alicia D.", "Norwich", "Switched from a national franchise — actual humans who know our property now."],
       ],
-      gallery: ["Freshly mowed front lawn", "Aerial shot — completed patio install", "Before / after — spring cleanup", "Crew trimming hedges on site"],
+      gallery: ["Freshly mowed front lawn", "Completed patio install, full view", "Before / after — spring cleanup", "Crew trimming hedges on site"],
     },
 
     "general-contracting": {
@@ -568,7 +595,7 @@
         ["Mike S.", "Tillsonburg", "Added a full second-floor bedroom. Zero surprise change orders."],
         ["Janelle O.", "Paris", "First contractor who actually returned calls the same day."],
       ],
-      gallery: ["Completed kitchen remodel", "Aerial shot — framed addition", "Before / after — finished basement", "Crew on site, foundation pour"],
+      gallery: ["Completed kitchen remodel", "Framed addition, mid-build", "Before / after — finished basement", "Crew on site, foundation pour"],
     },
 
     hvac: {
@@ -593,7 +620,7 @@
         ["Sonya K.", "Norwich", "Replaced our whole system in a day. Explained every option, no upsell pressure."],
         ["Andre M.", "Tillsonburg", "On the maintenance plan for three years now — zero breakdowns since."],
       ],
-      gallery: ["Furnace install, completed", "Aerial shot — rooftop commercial unit", "Before / after — ductwork replacement", "Tech on an emergency call"],
+      gallery: ["Furnace install, completed", "Rooftop commercial unit, completed", "Before / after — ductwork replacement", "Tech on an emergency call"],
     },
 
     handyman: {
@@ -618,7 +645,32 @@
         ["Jordan T.", "Woodstock", "Mounted three TVs and fixed a leaking faucet same visit. Fair price, no fuss."],
         ["Carla V.", "Tillsonburg", "Our go-to for anything that comes up. Always on time, always fair."],
       ],
-      gallery: ["Completed shelving install", "Aerial shot — exterior touch-up job", "Before / after — patched & painted wall", "On-site punch list walkthrough"],
+      gallery: ["Completed shelving install", "Exterior touch-up job, completed", "Before / after — patched & painted wall", "On-site punch list walkthrough"],
+    },
+
+    "car-detailing": {
+      label: "Car Detailing", navIcon: "car", accent: "#a4243b", accentDark: "#7d1b2c", accentSoft: "#f6dde1",
+      business: "Prestige Auto Detailing", domain: "prestigeautodetailing.com",
+      tagline: "Show-quality detail, every time.",
+      subheading: "Interior and exterior detailing for daily drivers and weekend cars alike — hand-washed and hand-finished, never a tunnel.",
+      phoneDisplay: "(519) 555-0176", phoneHref: "+15195550176",
+      area: "London · St. Thomas · Woodstock",
+      badges: ["Fully Insured", "Mobile Service Available", "Ceramic Coating Certified", "6 Years in Business"],
+      stats: [["6", "", "Years in business"], ["1800", "+", "Vehicles detailed"], ["5.0", "", "Average rating"]],
+      services: [
+        ["cloth", "Interior Detailing", "Deep clean, steam, and protect every surface — seats, carpets, and trim like new."],
+        ["droplet", "Exterior Hand Wash & Wax", "Hand-washed and waxed, never a brush tunnel that swirls your paint."],
+        ["sparkle", "Ceramic Coating", "Long-term paint protection that keeps the shine and cuts down on future washes."],
+        ["patch", "Paint Correction", "Swirl and scratch removal that brings dull paint back to a mirror finish."],
+        ["window", "Headlight Restoration", "Clouded headlights restored clear — better looks and better night visibility."],
+        ["move", "Mobile Detailing", "We come to your driveway or office lot — no drop-off, no waiting around."],
+      ],
+      testimonials: [
+        ["Chris B.", "London", "Ceramic coating still beading water eight months later. Worth every penny."],
+        ["Amanda F.", "St. Thomas", "Mobile detail showed up on time and my car looked better than the day I bought it."],
+        ["Devon K.", "Woodstock", "Paint correction took out scratches I thought were permanent."],
+      ],
+      gallery: ["Interior deep clean, completed", "Mobile detail, completed on location", "Before / after — paint correction", "Ceramic coating application"],
     },
   };
 

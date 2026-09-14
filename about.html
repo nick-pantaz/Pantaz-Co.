@@ -76,7 +76,7 @@
 
   /* ---- story ---- */
   .about-story p { font-size: 15.5px; max-width: 62ch; }
-  .about-story .placeholder-note {
+  .placeholder-note {
     font-family: var(--mono); font-size: 12px; color: var(--safety); background: rgba(194,84,42,.08);
     border: 1px dashed var(--safety); border-radius: var(--radius); padding: 10px 14px; margin-top: 4px;
   }
@@ -93,6 +93,13 @@
   .cred-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: var(--ink-2); text-align: center; }
   .cred-card .cred-num { font-family: var(--display); font-size: 28px; font-weight: 800; color: var(--navy); font-variant-numeric: tabular-nums; }
   .cred-card .cred-label { font-family: var(--mono); font-size: 11.5px; color: var(--paper-faint); margin-top: 4px; text-transform: uppercase; letter-spacing: .05em; }
+  .cred-price-note {
+    border: 1px dashed var(--safety); background: rgba(194,84,42,.08); border-radius: var(--radius);
+    padding: 16px 18px; margin-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .cred-price-was { font-family: var(--mono); font-size: 17px; color: var(--paper-faint); text-decoration: line-through; }
+  .cred-price-now { font-family: var(--display); font-size: 24px; font-weight: 800; color: var(--safety); }
+  .cred-price-note p { margin: 0; font-size: 13.5px; color: var(--paper); flex-basis: 100%; }
 
   /* ---- CTA ---- */
   .about-cta { text-align: left; }
@@ -151,10 +158,9 @@
 
   <section class="about-story">
     <span class="kicker">My story</span>
-    <h2>[ Placeholder — replace with your real background ]</h2>
-    <p>[ A couple of paragraphs here about how you got into building sites for local trades, what you did before this, and why you decided to focus on this specific kind of work. Keep it plain and specific — real details (where you grew up, what you studied or worked at before, a moment that made you want to do this) do more for trust here than polished marketing language. ]</p>
-    <p>[ A second paragraph on what you actually enjoy about the work, or what you noticed was broken about how local trades usually get websites built — e.g. slow agencies, generic templates, nobody picking up the phone after launch. This is the part that explains *why* Pantaz Co. exists. ]</p>
-    <p class="placeholder-note">This whole page is generic placeholder copy — swap in your real story, numbers, and credentials before this goes live. The goal is to read as unmistakably human: specific, a little imperfect, not AI-smoothed.</p>
+    <h2>From Alberta to Western — and finally starting it</h2>
+    <p>I'm a student at Western University studying engineering, originally from Alberta. Moving across the country meant a big change, and a push toward full independence. As the costs and realities of the everyday world caught up, I finally started a business and took action.</p>
+    <p>If you're trying to build out an online presence, or expand your net for more bookings, Pantaz Co. is built for you. I want to make it simple, to let you have a functioning, personalized site representing you and your business online, building trust with every consumer.</p>
   </section>
 
   <section class="about-values">
@@ -167,23 +173,29 @@
       </li>
       <li class="value-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div><h3>Local, not remote</h3><p>[ Placeholder — note your actual service area and any local ties: hometown, years in the region, local associations. ]</p></div>
+        <div><h3>Local, not remote</h3><p>You already serve your community — I want to make it easier for you to keep doing that, based in London, Ontario, not managing your site from somewhere overseas.</p></div>
       </li>
       <li class="value-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
-        <div><h3>Built by hand, not a template mill</h3><p>Every site is built around the business it's for — not a generic theme with a logo swapped in.</p></div>
+        <div><h3>Built by hand, not a template mill</h3><p>Every site is built for you — not a generic theme with a logo swapped in.</p></div>
       </li>
     </ul>
   </section>
 
   <section class="about-credentials">
     <span class="kicker">Credentials</span>
-    <h2>[ Placeholder — fill in with real numbers ]</h2>
+    <h2>Building out my portfolio</h2>
     <div class="cred-grid">
-      <div class="cred-card"><div class="cred-num">[X]</div><div class="cred-label">Years building sites</div></div>
-      <div class="cred-card"><div class="cred-num">[X]</div><div class="cred-label">Sites launched</div></div>
-      <div class="cred-card"><div class="cred-num">[X]</div><div class="cred-label">Trades served</div></div>
+      <div class="cred-card"><div class="cred-num">0</div><div class="cred-label">Years building sites</div></div>
+      <div class="cred-card"><div class="cred-num">0</div><div class="cred-label">Sites launched</div></div>
+      <div class="cred-card"><div class="cred-num">0</div><div class="cred-label">Trades served</div></div>
     </div>
+    <div class="cred-price-note">
+      <span class="cred-price-was">$1,200</span>
+      <span class="cred-price-now">$200</span>
+      <p>That's a Standard build for $200 upfront, not $1,200 — the founding-client price while I build this portfolio up from zero. Limited to the first ten clients.</p>
+    </div>
+    <p class="placeholder-note">The founder phone number in the CTA below is still a placeholder — swap it for a real one before this page goes live.</p>
   </section>
 
   <section class="about-cta">
