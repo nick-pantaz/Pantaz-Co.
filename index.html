@@ -162,8 +162,9 @@
   .price-card[aria-pressed="true"] .price-picked { opacity: 1; }
   .price-amount {
     font-family: var(--display); font-size: 42px; font-weight: 800; margin: 6px 0 1px;
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
   }
+  .price-was { font-size: 22px; font-weight: 700; color: var(--paper-faint); text-decoration: line-through; }
   .price-sub { font-size: 13px; color: var(--paper-faint); font-family: var(--mono); margin-bottom: 6px; }
   .price-tagline { font-size: 13.5px; color: var(--paper-dim); margin-bottom: 16px; }
   .price-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
@@ -317,20 +318,20 @@
     <div class="price-grid" role="tablist">
       <div class="price-card" id="cardStandard" role="tab" tabindex="0" aria-pressed="true">
         <div class="price-tier-row"><p class="price-tier">Standard</p><span class="price-picked">SELECTED</span></div>
-        <p class="price-amount">$1,200</p>
-        <p class="price-sub">one-time build</p>
+        <p class="price-amount"><span class="price-was">$1,200</span>$200</p>
+        <p class="price-sub">founding price · one-time build</p>
         <p class="price-tagline">Fast, no-nonsense, mobile-first. What most leads should see first.</p>
         <ul class="price-list">
           <li>Fast, mobile-first single-page site</li>
           <li>Services, testimonials, contact form &amp; map</li>
-          <li>Local SEO — titles, schema, matched NAP</li>
+          <li>Completely hands-off — the technical setup happens on my end, you never have to think about it</li>
           <li>Retainer optional — $100/mo covers hosting, edits &amp; support. Skip it and pay $45–150 per change instead.</li>
         </ul>
       </div>
       <div class="price-card" id="cardPremium" role="tab" tabindex="0" aria-pressed="false">
         <div class="price-tier-row"><p class="price-tier">Premium</p><span class="price-picked">SELECTED</span></div>
-        <p class="price-amount">$2,000</p>
-        <p class="price-sub">one-time build</p>
+        <p class="price-amount"><span class="price-was">$2,000</span>$500</p>
+        <p class="price-sub">founding price · one-time build</p>
         <p class="price-tagline">Same site, with scroll motion and animated stats that make your work stand out.</p>
         <ul class="price-list">
           <li>Everything in Standard</li>
@@ -351,6 +352,23 @@
         </div>
         <p>I'm taking on my first ten clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront) — no retainer required. Once the founding round is full, pricing returns to full price with an optional $100/mo retainer for hosting, edits, and support.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="preview-wrap">
+    <div class="browser-bar">
+      <span class="browser-url">🔒 <b id="barUrl">brighthorizoncleaning.com</b></span>
+      <div class="browser-actions">
+        <button type="button" class="browser-tag" id="barTag" aria-label="Switch to Premium">STANDARD</button>
+        <a class="open-tab-btn" id="openTabBtn" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+          Open in new tab
+        </a>
+      </div>
+    </div>
+    <div class="preview-frame" id="previewFrame">
+      <span class="could-be-yours">This could be yours →</span>
+      <div id="demoHost"></div>
     </div>
   </section>
 
@@ -387,23 +405,6 @@
     </div>
   </section>
 
-  <section class="preview-wrap">
-    <div class="browser-bar">
-      <span class="browser-url">🔒 <b id="barUrl">brighthorizoncleaning.com</b></span>
-      <div class="browser-actions">
-        <button type="button" class="browser-tag" id="barTag" aria-label="Switch to Premium">STANDARD</button>
-        <a class="open-tab-btn" id="openTabBtn" href="#" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
-          Open in new tab
-        </a>
-      </div>
-    </div>
-    <div class="preview-frame" id="previewFrame">
-      <span class="could-be-yours">This could be yours →</span>
-      <div id="demoHost"></div>
-    </div>
-  </section>
-
   <section class="highlights">
     <span class="picker-label">04 — Why this works</span>
     <h2>Built to actually get you calls</h2>
@@ -420,8 +421,8 @@
       </div>
       <div class="highlight-card">
         <div class="highlight-icon" data-icon="pin"></div>
-        <h3>Local SEO, built in</h3>
-        <p>Proper titles, schema markup, and a name/address/phone that matches your Google Business listing exactly — not bolted on after.</p>
+        <h3>Completely hands-off</h3>
+        <p>The technical setup — search visibility, structure, all of it — happens on my end. You never have to think about it, it just works.</p>
       </div>
       <div class="highlight-card">
         <div class="highlight-icon" data-icon="star"></div>
@@ -455,7 +456,7 @@
     <div class="timeline">
       <span class="picker-label">What it takes on your end</span>
       <ol class="timeline-list">
-        <li><span class="timeline-num">1</span><span><strong>One 15-minute call</strong> — tell me about your business, service area, and what you want on the site.</span></li>
+        <li><span class="timeline-num">1</span><span><strong>Tell me about your business</strong> — call, message, or email, whichever's easiest for you. Service area, what you want on the site.</span></li>
         <li><span class="timeline-num">2</span><span><strong>Send a few photos</strong> — your crew, your work, your storefront. Phone photos are fine.</span></li>
         <li><span class="timeline-num">3</span><span><strong>Live in about five days</strong> — you review it once, I make changes, it goes live.</span></li>
       </ol>
