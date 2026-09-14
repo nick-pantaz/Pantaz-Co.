@@ -175,8 +175,13 @@
     padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px;
   }
   .founding-banner svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--safety); margin-top: 2px; }
-  .founding-banner h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
+  .founding-banner .founding-head-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 4px; }
+  .founding-banner h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--paper); margin: 0; }
   .founding-banner p { font-size: 14px; color: var(--paper-dim); }
+  .founding-progress {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .03em; color: var(--safety);
+    border: 1px solid var(--safety); background: rgba(194,84,42,.08); border-radius: 999px; padding: 3px 10px;
+  }
 
   /* ---- why premium ---- */
   .why-premium { padding: 44px 0 10px; border-top: 1px solid var(--line-soft); margin-top: 6px; }
@@ -301,7 +306,7 @@
   <section class="base-not-ceiling">
     <p class="bnc-eyebrow">A note before you pick</p>
     <h2>This is the base — not the ceiling.</h2>
-    <p>Every color, section, and animation on this page is a starting point, not a limit. Want more motion than Premium shows here? Less? A different layout, extra pages, a custom interaction built just for you? All of it's on the table. Your site is built around your business, so it won't look like anyone else's — including the other four trades you can preview right here.</p>
+    <p>Every color, section, and animation on this page is a starting point, not a limit. Want more motion than Premium shows here? Less? A different layout, extra pages, a custom interaction built just for you? All of it's on the table. Your site is built around your business, so it won't look like anyone else's — including the other five trades you can preview right here.</p>
   </section>
 
   <section class="picker">
@@ -339,7 +344,11 @@
     <div class="founding-banner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
       <div>
-        <h3>Founding client discount</h3>
+        <div class="founding-head-row">
+          <h3>Founding client discount</h3>
+          <!-- Update this count as founding clients sign on -->
+          <span class="founding-progress">0 / 10 spots filled</span>
+        </div>
         <p>I'm taking on my first ten clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront) — no retainer required. Once the founding round is full, pricing returns to full price with an optional $100/mo retainer for hosting, edits, and support.</p>
       </div>
     </div>
