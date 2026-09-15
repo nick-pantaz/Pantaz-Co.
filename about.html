@@ -99,7 +99,9 @@
   }
   .cred-price-was { font-family: var(--mono); font-size: 17px; color: var(--paper-faint); text-decoration: line-through; }
   .cred-price-now { font-family: var(--display); font-size: 24px; font-weight: 800; color: var(--safety); }
-  .cred-price-note p { margin: 0; font-size: 13.5px; color: var(--paper); flex-basis: 100%; }
+  .cred-price-line { display: flex; align-items: baseline; gap: 10px; flex-basis: 100%; }
+  .cred-price-tier-label { font-family: var(--mono); font-size: 12px; color: var(--paper-faint); text-transform: uppercase; letter-spacing: .04em; }
+  .cred-price-note p { margin: 6px 0 0; font-size: 13.5px; color: var(--paper); flex-basis: 100%; }
 
   /* ---- CTA ---- */
   .about-cta { text-align: left; }
@@ -191,9 +193,9 @@
       <div class="cred-card"><div class="cred-num">$1,500</div><div class="cred-label">Max founding savings</div></div>
     </div>
     <div class="cred-price-note">
-      <span class="cred-price-was">$1,200</span>
-      <span class="cred-price-now">$200</span>
-      <p>That's a Standard build for $200 upfront, not $1,200 — the founding-client price while I build this portfolio up from zero. <!-- Update this count as founding clients sign on --><strong>0 of 10</strong> founding spots taken.</p>
+      <div class="cred-price-line"><span class="cred-price-was">$1,200</span><span class="cred-price-now">$200</span><span class="cred-price-tier-label">Standard</span></div>
+      <div class="cred-price-line"><span class="cred-price-was">$2,000</span><span class="cred-price-now">$500</span><span class="cred-price-tier-label">Premium</span></div>
+      <p>Founding-client pricing while I build this portfolio up from zero. <!-- Update this count as founding clients sign on --><strong>0 of 10</strong> founding spots taken.</p>
     </div>
   </section>
 

@@ -103,7 +103,7 @@
   /* ---- preview frame ---- */
   .preview-wrap { padding: 6px 0 46px; }
   .browser-bar {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     background: var(--ink-2); border: 1px solid var(--line); border-bottom: 0;
     border-radius: var(--radius) var(--radius) 0 0;
     padding: 10px 14px; font-family: var(--mono); font-size: 12.5px; color: var(--paper-faint);
@@ -117,7 +117,7 @@
   }
   .browser-tag:hover { background: var(--live-accent, var(--safety)); color: #fff; }
   .browser-tag:focus-visible { outline: 2px solid var(--live-accent, var(--safety)); outline-offset: 2px; }
-  .browser-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .browser-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .open-tab-btn {
     font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--paper);
     background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; cursor: pointer;
@@ -311,10 +311,7 @@
   </section>
 
   <section class="picker">
-    <span class="picker-label">01 — Choose a trade</span>
-    <div class="swatch-row" id="swatchRow" role="tablist"></div>
-
-    <span class="picker-label">02 — Choose a tier</span>
+    <span class="picker-label">01 — Choose a tier</span>
     <div class="price-grid" role="tablist">
       <div class="price-card" id="cardStandard" role="tab" tabindex="0" aria-pressed="true">
         <div class="price-tier-row"><p class="price-tier">Standard</p><span class="price-picked">SELECTED</span></div>
@@ -325,7 +322,7 @@
           <li>Fast, mobile-first single-page site</li>
           <li>Services, testimonials, contact form &amp; map</li>
           <li>Completely hands-off — the technical setup happens on my end, you never have to think about it</li>
-          <li>Retainer optional — $40/mo for your first 6 months as a founding client (then $100/mo), covers hosting, edits &amp; support. Skip it and pay $45–150 per change instead.</li>
+          <li>Retainer optional — $40/mo for your first 6 months as a founding client (then $100/mo), covers hosting, 2 free small edits a month, and support. Skip it and pay $15–$45 per edit instead.</li>
         </ul>
       </div>
       <div class="price-card" id="cardPremium" role="tab" tabindex="0" aria-pressed="false">
@@ -337,7 +334,7 @@
           <li>Everything in Standard</li>
           <li>Scroll animation &amp; polished motion throughout</li>
           <li>Photo direction — guidance on getting shots that put your work in the best light</li>
-          <li>Retainer optional — $40/mo for your first 6 months as a founding client (then $100/mo), covers hosting, edits &amp; support. Skip it and pay $45–150 per change instead.</li>
+          <li>Retainer optional — $40/mo for your first 6 months as a founding client (then $100/mo), covers hosting, 2 free small edits a month, and support. Skip it and pay $15–$45 per edit instead.</li>
         </ul>
       </div>
     </div>
@@ -353,6 +350,9 @@
         <p>I'm taking on my first ten clients to build out my portfolio. As a founding client, take $1,000 off Standard (pay $200 upfront) or $1,500 off Premium (pay $500 upfront). The retainer's still optional — but if you want one, it's $40/mo for your first six months instead of the standard $100/mo. Once the founding round is full, pricing returns to full price with an optional $100/mo retainer for hosting, edits, and support.</p>
       </div>
     </div>
+
+    <span class="picker-label">02 — Choose a trade</span>
+    <div class="swatch-row" id="swatchRow" role="tablist"></div>
   </section>
 
   <section class="preview-wrap">
@@ -419,7 +419,7 @@
         <p class="fit-label">If you want the retainer</p>
         <ul class="fit-list">
           <li>Hosting's on me — nothing separate to set up or pay for.</li>
-          <li>Unlimited small edits — hours, pricing, new photos, a new service added.</li>
+          <li>Unlimited small edits (hours, pricing, new photos, a new service added), forever — a signing bonus for being one of the first 10. Keeps going even after your rate moves to $100/mo.</li>
           <li>Text or call me directly when something needs changing.</li>
           <li>$40/mo for your first 6 months as a founding client, then $100/mo — no long-term contract.</li>
         </ul>
@@ -429,7 +429,7 @@
         <p class="fit-label">If you'd rather just own it</p>
         <ul class="fit-list">
           <li>No recurring cost while you don't need anything changed.</li>
-          <li>$45–150 per change, only when you actually want one.</li>
+          <li>$15–$45 per change, only when you actually want one.</li>
           <li>Hosting becomes your own call — I'll point you in the right direction, it's not locked to me.</li>
         </ul>
         <p class="fit-examples"><strong>Good fit:</strong> businesses that don't expect to touch the site much after launch.</p>
